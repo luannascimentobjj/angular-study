@@ -1,0 +1,37 @@
+            <div class="jumbotron">
+              <h1 class="text-center">Alurapic</h1>
+             </div>
+
+             <p class="alert- alert-info" ng-show="mensagem.length">
+                {{mensagem}}
+             </p>
+
+             <div class="row">
+                 <div class ="col-md-12">
+                    <form>
+                    <!--Debounce é um objeto javascript para retardar, passa segundos-->
+                    <div class="input-group">
+                         <span class="input-group-btn">
+                                <a href="fotos/new" class="btn btn-primary">Nova Foto</a>
+                          </span>
+                        <input ng-model="filtro" ng-model-options="{debounce: 500}" class="form-control" placeholder="filtrar">
+                    </div>
+                        
+                    </form>
+                 </div><!--fim col-md-12-->
+             </div><!--fim row-->
+
+             <div class="row">
+             <!--Filter é utilizado como filtro para uma lista | filter: lista-->
+            <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
+                   <img class="img-responsive center-block" src="{{foto.url}}" width="150" height="150" 
+                 alt="{{foto.titulo}}">
+
+                 <a href="fotos/edit/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
+                 <meu-botao-perigo nome="Remover" acao="remover(foto)">
+            </meu-painel>
+           </div><!-- fim do row -->
+          <meus-titulos></meus-titulos>
+
+
+            
